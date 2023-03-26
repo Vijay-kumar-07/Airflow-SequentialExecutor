@@ -11,3 +11,7 @@ docker-compose up airflow-init
 docker-compose up
 ````
 5. Open localhost:8081 in your browser and the credentials as user = admin and password = airflow.
+6. To Turn down the docker compose file
+````
+docker-compose down
+````
