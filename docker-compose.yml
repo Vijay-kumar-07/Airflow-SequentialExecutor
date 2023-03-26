@@ -12,7 +12,7 @@ x-airflow-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - .db:/usr/local/airflow/db
-  user: "${AIRFLOW_UID:-50000}:{AIRFLOW_GID:-50000}"
+  user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-50000}"
 
 services:
   airflow-init:
