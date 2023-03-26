@@ -2,7 +2,7 @@ version: '3'
 
 x-airflow-common:
   &airflow-common
-  image: apache/ariflow:2.1.1-python3.8
+  image: apache/airflow:2.1.1-python3.8
   environment:
     &airflow-common-env
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: sqlite:////usr/local/airflow/db/airflow.db
@@ -12,7 +12,7 @@ x-airflow-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - .db:/usr/local/airflow/db
-  user: "${AIRFLOW_UID:50000}:{AIRFLOW_GID:50000}"
+  user: "${AIRFLOW_UID:-50000}:{AIRFLOW_GID:-50000}"
 
 services:
   airflow-init:
@@ -22,7 +22,7 @@ services:
       /bin/bash -c "
         airflow db init
         airflow db upgrade
-        airflow users create -r Admin -u admin -e airflow@airflow.com -f Vijay -l kumar -p ariflow
+        airflow users create -r Admin -u admin -e airflow@airflow.com -f Vijay -l kumar -p airflow
       "
     environment:
       <<: *airflow-common-env
